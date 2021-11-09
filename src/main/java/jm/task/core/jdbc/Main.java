@@ -4,14 +4,15 @@ import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         UserService userService = new UserServiceImpl();
 
-        final User user1 = new User("Ivan", "Ivanov", (byte) 25);
+        User user1 = new User("Ivan", "Ivanov", (byte) 25);
         User user2 = new User("Vladimir", "Vladimirov", (byte) 44);
         User user3 = new User("Petr", "Petrov", (byte) 55);
         User user4 = new User("Viktor", "Viktorov", (byte) 22);
