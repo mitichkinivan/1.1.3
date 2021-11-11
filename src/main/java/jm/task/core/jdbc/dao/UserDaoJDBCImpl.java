@@ -19,8 +19,6 @@ public class UserDaoJDBCImpl implements UserDao {
                     "name VARCHAR(50), " +
                     "lastName VARCHAR (50), " +
                     "age TINYINT , PRIMARY KEY (id))");
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         try {
             if (connection != null) {
@@ -36,8 +34,6 @@ public class UserDaoJDBCImpl implements UserDao {
         Connection connection = Util.getConnection();
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate("DROP TABLE IF EXISTS users");
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         try {
             if (connection != null) {
@@ -52,13 +48,11 @@ public class UserDaoJDBCImpl implements UserDao {
     public void saveUser(String name, String lastName, byte age) throws SQLException {
         Connection connection = Util.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO users(name , lastName, age)" +
-                    "VALUES (?,?,?)")) {
+                "VALUES (?,?,?)")) {
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, lastName);
             preparedStatement.setInt(3, age);
             preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         try {
             if (connection != null) {
@@ -74,8 +68,6 @@ public class UserDaoJDBCImpl implements UserDao {
         Connection connection = Util.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM users WHERE id = " + id)) {
             preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         try {
             if (connection != null) {
@@ -110,13 +102,11 @@ public class UserDaoJDBCImpl implements UserDao {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         try {
             if (connection != null) {
-            connection.close();
-        }
+                connection.close();
+            }
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -128,8 +118,6 @@ public class UserDaoJDBCImpl implements UserDao {
         Connection connection = Util.getConnection();
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate("TRUNCATE TABLE users");
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         try {
             if (connection != null) {
