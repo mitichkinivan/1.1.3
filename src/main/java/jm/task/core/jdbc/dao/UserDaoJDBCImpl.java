@@ -23,6 +23,9 @@ public class UserDaoJDBCImpl implements UserDao {
             e.printStackTrace();
         }
         try {
+            if (connection != null) {
+                connection.close();
+            }
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -37,6 +40,9 @@ public class UserDaoJDBCImpl implements UserDao {
             e.printStackTrace();
         }
         try {
+            if (connection != null) {
+                connection.close();
+            }
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
